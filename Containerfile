@@ -1,6 +1,6 @@
 # Bazzite DX (KDE + Nvidia Open + gaming + dev)
 # Hardware: i9-13900HX, RTX 4070 Mobile, Intel UHD iGPU, 2560x1600 165Hz
-FROM ghcr.io/ublue-os/bazzite-dx-nvidia-open:stable
+FROM ghcr.io/ublue-os/bazzite-dx-nvidia:stable
 
 RUN dnf remove -y \
     sunshine               \
