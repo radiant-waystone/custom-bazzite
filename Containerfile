@@ -2,6 +2,10 @@
 # Hardware: i9-13900HX, RTX 4070 Mobile, Intel UHD iGPU, 2560x1600 165Hz
 FROM ghcr.io/ublue-os/bazzite-dx-nvidia:stable
 
+RUN dnf install -y \
+    ghostty \
+    && dnf clean all
+
 # Nvidia suspend/resume: preserve VRAM across sleep cycles
 # inotify: raise limit for VS Code / JetBrains file watching
 RUN echo 'fs.inotify.max_user_watches = 524288' > /usr/lib/sysctl.d/99-custom.conf
