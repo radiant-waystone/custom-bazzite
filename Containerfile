@@ -14,4 +14,12 @@ RUN echo 'fs.inotify.max_user_watches = 524288' > /usr/lib/sysctl.d/99-custom.co
 #   (LenovoLegionLinux needs DKMS which doesn't work on atomic systems,
 #    CoolerControl is the supported alternative on Bazzite)
 
+# Encryption tools
+# - dislocker/fuse-dislocker: mount BitLocker-encrypted Windows partitions
+# - VeraCrypt: URL resolved at build time by the CI workflow and passed in as a build arg
+ARG VERACRYPT_RPM_URL
+RUN dnf5 install -y dislocker fuse-dislocker && \
+    dnf5 install -y "${VERACRYPT_RPM_URL}" && \
+    dnf5 clean all
+
 RUN bootc container lint

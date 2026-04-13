@@ -32,6 +32,15 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: Get latest VeraCrypt version
+        id: veracrypt
+        run: |
+          VERSION=$(curl -s https://api.github.com/repos/veracrypt/VeraCrypt/releases/latest \
+            | jq -r '.tag_name' \
+            | sed 's/VeraCrypt_//')
+          echo "Resolved VeraCrypt version: ${VERSION}"
+          echo "rpm_url=https://launchpad.net/veracrypt/trunk/${VERSION}/+download/veracrypt-${VERSION}-CentOS-8-x86_64.rpm" >> $GITHUB_OUTPUT
+
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
         with:
@@ -42,6 +51,7 @@ jobs:
       - name: Build image
         run: |
           podman build \
+            --build-arg VERACRYPT_RPM_URL=${{ steps.veracrypt.outputs.rpm_url }} \
             --tag ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}:latest \
             --tag ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}:$(date +%Y%m%d) \
             .
