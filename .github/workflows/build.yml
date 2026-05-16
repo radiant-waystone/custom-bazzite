@@ -28,7 +28,7 @@ jobs:
           TAG=$(curl -s https://api.github.com/repos/veracrypt/VeraCrypt/releases/latest \
                 | jq -r '.tag_name')
           VER="${TAG#VeraCrypt_}"
-          echo "url=https://github.com/veracrypt/VeraCrypt/releases/download/${TAG}/veracrypt-${VER}-1.x86_64.rpm" \
+          echo "url=https://github.com/veracrypt/VeraCrypt/releases/download/${TAG}/veracrypt-${VER}-Fedora-40-x86_64.rpm" \
             >> "$GITHUB_OUTPUT"
 
       - name: Log in to GHCR
