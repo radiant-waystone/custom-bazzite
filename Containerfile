@@ -7,10 +7,12 @@ COPY build_files /build_files
 
 FROM ${BASE_IMAGE}
 
-ARG IMAGE_NAME="${IMAGE_NAME:-bazzite-dx}"
-ARG IMAGE_VENDOR="{IMAGE_VENDOR:-ublue-os}"
+ARG IMAGE_NAME="${IMAGE_NAME:-bazzite-dx-custom-nvidia}"
+ARG IMAGE_VENDOR="${IMAGE_VENDOR:-ublue-os}"
+ARG VERACRYPT_RPM_URL
 
 RUN --mount=type=tmpfs,dst=/tmp \
   --mount=type=bind,from=ctx,source=/,target=/run/context \
   mkdir -p /var/roothome && \
-  /run/context/build_files/build.sh
+  /run/context/build_files/build.sh && \
+  bootc container lint

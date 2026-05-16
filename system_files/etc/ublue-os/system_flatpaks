@@ -1,5 +1,5 @@
 app.drey.Warp
-com.github.k4zmu2a.spacecadetpinball
+# com.github.k4zmu2a.spacecadetpinball  # removed: unused
 com.github.Matoking.protontricks
 com.github.PintaProject.Pinta
 com.github.tchx84.Flatseal
@@ -7,7 +7,7 @@ com.github.wwmm.easyeffects
 com.jeffser.Alpaca
 com.jeffser.Alpaca.Plugins.AMD
 com.obsproject.Studio
-com.spotify.Client
+# com.spotify.Client  # removed: unused
 com.stremio.Stremio
 com.usebottles.bottles
 de.leopoldluley.Clapgrep

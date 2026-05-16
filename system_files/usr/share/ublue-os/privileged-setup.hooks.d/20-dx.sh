@@ -20,7 +20,5 @@ append_group docker
 # append_group incus-admin
 # usermod -aG incus-admin $user
 
-mapfile -t wheelarray < <(getent group wheel | cut -d ":" -f 4 | tr ',' '\n')
-for user in "${wheelarray[@]}"; do
-	usermod -aG docker "$user"
-done
+# docker group intentionally not auto-assigned: docker group = root-equivalent.
+# Run `usermod -aG docker $USER` manually after first login if needed.
