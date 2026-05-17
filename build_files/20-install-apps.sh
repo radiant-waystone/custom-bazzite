@@ -10,14 +10,20 @@ set -xeuo pipefail
 #   tiptop         - unused perf tool
 #   usbmuxd        - no iOS devices
 #   waypipe        - unused remote Wayland forwarding
+# Explicitly installed (dropped from bazzite-nvidia base in fc44):
+#   cryfs, fuse-encfs, git, ptyxis
 dnf5 install -y \
     ccache \
+    cryfs \
     dislocker \
     flatpak-builder \
     fuse-dislocker \
+    fuse-encfs \
+    git \
     git-subtree \
     intel-undervolt \
     podman-tui \
+    ptyxis \
     python3-ramalama \
     restic \
     rclone \
